@@ -20,6 +20,19 @@
 
 .App-intro {
   font-size: large;
+  text-align: left;
+}
+
+.MemoryDetailContainer {
+  float: left;
+}
+
+.MemoryContainer {
+  float: left;
+}
+
+.MediaContainer {
+  float: right;
 }
 
 @keyframes App-logo-spin {
