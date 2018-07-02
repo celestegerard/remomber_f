@@ -3,11 +3,16 @@ import NavBar from './containers/NavBar';
 import MemoryDetailContainer from './containers/MemoryDetailContainer';
 import MediaContainer from './containers/MediaContainer';
 import MemoryContainer from './containers/MemoryContainer';
+import RegistrationForm from './RegistrationForm';
+import LoginForm from './LoginForm';
+import Adapter from './Adapter';
+
 import './App.css';
 const URL = "http://localhost:3000/api/v1/"
 
 class App extends Component {
   state = {
+    token: "",
     memories: [],
     currentMemory: {},
     members: [],
@@ -47,12 +52,17 @@ class App extends Component {
     const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
 
     return (
-      <div className="App">
-        <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-        <MemoryDetailContainer memories={ filteredMemories } handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-        <MemoryContainer tags={this.state.tags} currentMemory={this.state.currentMemory} />
-        <MediaContainer currentMemory={this.state.currentMemory} />
-      </div>
+        {
+          Adapter.loggedIn() ?
+        <div className="App">
+          <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+          <MemoryDetailContainer memories={ filteredMemories } handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+          <MemoryContainer tags={this.state.tags} currentMemory={this.state.currentMemory} />
+          <MediaContainer currentMemory={this.state.currentMemory} />
+        </div>
+        :
+        null
+      }
     );
   }
 }
