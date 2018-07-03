@@ -28,7 +28,7 @@
 }
 
 .MemoryContainer {
-  float: left;
+  align-items: center;
 }
 
 .MediaContainer {

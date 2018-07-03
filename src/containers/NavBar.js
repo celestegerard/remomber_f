@@ -6,12 +6,12 @@ import Tag from '../components/Tag';
 class NavBar extends Component {
   render() {
     return(
-      <div>
-      NavBar
-      <Filter members={this.props.members} handleDropdownSelect={this.props.handleDropdownSelect}/>
-      <SearchBar />
-      <Tag />
-      <br />
+      <div className="Nav">
+        <Filter members={this.props.members} handleDropdownSelect={this.props.handleDropdownSelect}/>
+        <SearchBar />
+          <button>register</button>
+          <button>log in</button>
+        <br />
       </div>
     )
   }

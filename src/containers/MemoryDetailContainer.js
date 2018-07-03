@@ -4,15 +4,16 @@ import UUID from 'uuid';
 
 class MemoryDetailContainer extends Component {
 
-  generateMemories = () => {
-    return this.props.memories.map(memory => <MemoryDetail handleMemoryDetailSelect={this.props.handleMemoryDetailSelect} memory={memory} />)
-  }
+  // generateMemories = () => {
+  //   // return this.props.memories.map(memory => <MemoryDetail handleMemoryDetailSelect={this.props.handleMemoryDetailSelect} memory={memory} />)
+  // }
   render() {
-    const memories = this.generateMemories()
+    // const memories = this.generateMemories()
     return(
       <div className="MemoryDetailContainer">
-      {memories}
+      Memory Detail Container
       <br />
+      memory title
       </div>
     )
   }

@@ -17,11 +17,13 @@ class RegistrationForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3001/api/v1/members",
+    fetch(
+      `http://localhost:3001/api/v1/members`,
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": localStorage.getItem("token")
         },
         body: JSON.stringify({ username: this.state.username, password: this.state.password })
       }

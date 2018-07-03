@@ -31,7 +31,6 @@ class LoginForm extends Component {
       localStorage.setItem('id', json.id);
       console.log(localStorage);
       localStorage.token ? this.setState({ loggedIn: true }) : null
-      this.state.loggedIn
     })
   }
 
