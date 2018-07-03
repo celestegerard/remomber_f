@@ -6,18 +6,18 @@ class RegistrationForm extends Component {
   state = {
     username: "",
     password: "",
-    // token: "" // This will disappear on page refresh!!
+    token: ""
   }
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/users/",
+    fetch("http://localhost:3001/api/v1/members",
       {
         method: "POST",
         headers: {
@@ -29,20 +29,14 @@ class RegistrationForm extends Component {
     .then(res => res.json())
     .then(json => {
       console.log("json", json)
+      debugger
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
-      this.props.history.push("/my-snacks")
-
-      // this.setState({
-      //   token: json.token
-      // }, () => {
-      //   console.log("state", this.state)
-      // })
+      console.log(localStorage);
     })
   }
 
   render() {
-    console.log('render', this.state)
     return (
       <div className="registration">
         <form onSubmit={this.handleSubmit}>

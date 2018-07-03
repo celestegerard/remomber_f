@@ -4,17 +4,18 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
+    loggedIn: false
   }
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/sessions/",
+    fetch("http://localhost:3001/api/v1/sessions",
       {
         method: "POST",
         headers: {
@@ -25,15 +26,17 @@ class LoginForm extends Component {
     )
     .then(res => res.json())
     .then(json => {
-      console.log("json", json)
+      console.log(json);
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
-      this.props.history.push("/my-snacks")
+      console.log(localStorage);
+      localStorage.token ? this.setState({ loggedIn: true }) : null
+      this.state.loggedIn
     })
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.loggedIn);
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit}>
