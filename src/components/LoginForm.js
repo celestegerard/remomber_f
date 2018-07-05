@@ -4,7 +4,8 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    loggedIn: false
+    loggedIn: false,
+    first_name: ""
   }
 
   handleChange = (event) => {
@@ -35,7 +36,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state.loggedIn);
+    // console.log(this.state.loggedIn);
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit}>

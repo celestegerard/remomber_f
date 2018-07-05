@@ -6,6 +6,7 @@ class RegistrationForm extends Component {
   state = {
     username: "",
     password: "",
+    first_name: "",
     token: ""
   }
 
@@ -25,13 +26,12 @@ class RegistrationForm extends Component {
           "Content-Type": "application/json",
           "Authorization": localStorage.getItem("token")
         },
-        body: JSON.stringify({ username: this.state.username, password: this.state.password })
+        body: JSON.stringify({ username: this.state.username, password: this.state.password, first_name: this.state.first_name })
       }
     )
     .then(res => res.json())
     .then(json => {
       console.log("json", json)
-      debugger
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
       console.log(localStorage);
@@ -39,9 +39,18 @@ class RegistrationForm extends Component {
   }
 
   render() {
+    // console.log( "registration", this.state);
     return (
       <div className="registration">
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor="first_name">First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            onChange={this.handleChange}
+            value={this.state.first_name}
+          />
           <label htmlFor="username">Username</label>
           <input
             type="text"

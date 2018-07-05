@@ -51,16 +51,18 @@ class App extends Component {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InN1c2FuIiwiaWQiOjF9.uHSy5vuMGMuZvljunf_uQ6ciT3A9YoL_4WsVj1q4lFE"
+          "Authorization": `${localStorage.getItem("token")}`
         }
       }
     )
     .then(res => res.json())
-    .then(memories => console.log(memories))
+    .then(memories => this.setState({ memories }))
     }
 
   render() {
-    // const mems = this.getMemories()
+    const memories = this.getMemories()
+    // console.log(this.state.memories);
+    // console.log(this.state.Members);
     // const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
     return (
         <div className="App">

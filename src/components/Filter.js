@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 class Filter extends Component {
-  // generateMembers = () => {
-  //   return this.props.members.map( member => <option>{member.first_name}</option>)
-  // }
+
+  generateMembers = () => {
+    return this.props.members.map( member => <option>{member.first_name}</option>)
+  }
 
   render() {
     // const membersSelect = this.generateMembers()
