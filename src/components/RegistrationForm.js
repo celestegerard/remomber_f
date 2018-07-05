@@ -7,6 +7,7 @@ class RegistrationForm extends Component {
     username: "",
     password: "",
     first_name: "",
+    family_id: "",
     token: ""
   }
 
@@ -26,7 +27,12 @@ class RegistrationForm extends Component {
           "Content-Type": "application/json",
           "Authorization": localStorage.getItem("token")
         },
-        body: JSON.stringify({ username: this.state.username, password: this.state.password, first_name: this.state.first_name })
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password,
+          first_name: this.state.first_name,
+          family_id: this.state.family_id
+        })
       }
     )
     .then(res => res.json())
@@ -39,7 +45,6 @@ class RegistrationForm extends Component {
   }
 
   render() {
-    // console.log( "registration", this.state);
     return (
       <div className="registration">
         <form onSubmit={this.handleSubmit}>
@@ -50,6 +55,14 @@ class RegistrationForm extends Component {
             placeholder="First Name"
             onChange={this.handleChange}
             value={this.state.first_name}
+          />
+        <label htmlFor="family_id">Family ID</label>
+          <input
+            type="text"
+            name="family_id"
+            placeholder="Family ID"
+            onChange={this.handleChange}
+            value={this.state.family_id}
           />
           <label htmlFor="username">Username</label>
           <input

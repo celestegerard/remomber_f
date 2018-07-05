@@ -59,7 +59,19 @@ class App extends Component {
   }
 
   handleMemoryFormSubmit = (e) => {
-    console.log(e)
+    e.preventDefault();
+    console.log(e.target.value);
+    fetch(
+      `http://localhost:3001/api/v1/memories`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json" },
+        body: JSON.stringify({ body: e.target.value })
+      }
+    )
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
 

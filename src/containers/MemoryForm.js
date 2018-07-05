@@ -11,7 +11,7 @@ class MemoryForm extends Component {
         type="text"
         name="memory"
         placeholder="what happened?"
-        onSubmit={(e) => this.props.handleMemoryFormSubmit(e)}
+        onSubmit={ (e) => this.props.handleMemoryFormSubmit(e)}
       />
       <input type="submit" value="done" />
     </form>

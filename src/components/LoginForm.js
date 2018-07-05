@@ -29,7 +29,6 @@ class LoginForm extends Component {
       console.log(json);
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
-      console.log(localStorage);
     })
   }
 
