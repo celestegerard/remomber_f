@@ -5,8 +5,8 @@ class Memory extends Component {
   render() {
     return(
       <div>
-        <p>memory title</p>
-        <p>memory body</p>
+        <p>{this.props.currentMemory.title}</p>
+        <p>{this.props.currentMemory.body}</p>
       </div>
     )
   }

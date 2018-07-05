@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import NavBar from './containers/NavBar';
 import MemoryDetailContainer from './containers/MemoryDetailContainer';
-import MediaContainer from './containers/MediaContainer';
+import MemoryForm from './containers/MemoryForm';
 import MemoryContainer from './containers/MemoryContainer';
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
-import Memory from './components/Memory';
 
 import './App.css';
 const URL = "http://localhost:3001/api/v1/"
@@ -21,11 +20,11 @@ class App extends Component {
     tags: []
   }
 
-  handleDropdownSelect = (currentMember) => {
+  handleDropdownSelect = currentMember => {
     this.setState({ currentMember })
   }
 
-  handleMemoryDetailSelect = (memoryTitle) => {
+  handleMemoryDetailSelect = memoryTitle => {
     const currentMemory = this.state.memories.find(memory => memory.title === memoryTitle)
     this.setState({ currentMemory })
   }
@@ -57,16 +56,18 @@ class App extends Component {
     )
     .then(res => res.json())
     .then(memories => this.setState({ memories }))
-    }
+  }
+
+  handleMemoryFormSubmit = (e) => {
+    console.log(e)
+  }
+
 
   render() {
-    const memories = this.getMemories()
-    // console.log(this.state.memories);
-    // console.log(this.state.Members);
+    // const memories = this.getMemories()
     // const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
     return (
         <div className="App">
-          <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
           To Register:
           <br />
           <RegistrationForm />
@@ -77,9 +78,10 @@ class App extends Component {
           {
             localStorage.length > 0 ?
             <React.Fragment>
-            <MemoryDetailContainer handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-            <MemoryContainer tags={this.state.tags} />
-            <MediaContainer  />
+            <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+            <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+            <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
+            <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
           </React.Fragment>
           :
           null
@@ -90,3 +92,13 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+// fetch( URL + "memories", {
+//     method: "POST",
+//     headers: { "Content-type": "application/json" },
+//     body: JSON.stringify({ body: post })
+//   })
+//   .then(res => res.json())
+//   .then(post => console.log(post) )

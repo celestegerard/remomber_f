@@ -4,7 +4,6 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    loggedIn: false,
     first_name: ""
   }
 
@@ -31,12 +30,10 @@ class LoginForm extends Component {
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
       console.log(localStorage);
-      localStorage.token ? this.setState({ loggedIn: true }) : null
     })
   }
 
   render() {
-    // console.log(this.state.loggedIn);
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit}>
