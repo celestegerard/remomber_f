@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import AuthAdapter from './'
 // AuthAdapter.saveToken(token)
 
@@ -46,41 +47,33 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <div className="registration">
+      <div className="Registration">
+        <Link to="/login" className="LoginButton">login</Link>
+      <br />
+        welcome!
+        <br />
+        <br />
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="first_name">First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-            onChange={this.handleChange}
-            value={this.state.first_name}
-          />
-        <label htmlFor="family_id">Family ID</label>
-          <input
-            type="text"
-            name="family_id"
-            placeholder="Family ID"
-            onChange={this.handleChange}
-            value={this.state.family_id}
-          />
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" />
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="email"
             onChange={this.handleChange}
             value={this.state.username}
           />
-          <label htmlFor="password">Password</label>
+        <br />
+          <label htmlFor="password" />
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="create a password"
             onChange={this.handleChange}
             value={this.state.password}
           />
-          <input type="submit" value="Register" />
+        <br />
+        <br />
+          <input type="submit" value="continue" />
         </form>
       </div>
     )
@@ -88,3 +81,20 @@ class RegistrationForm extends Component {
 }
 
 export default RegistrationForm;
+
+//   <label htmlFor="first_name">First Name</label>
+//   <input
+//     type="text"
+//     name="first_name"
+//     placeholder="First Name"
+//     onChange={this.handleChange}
+//     value={this.state.first_name}
+//   />
+// <label htmlFor="family_id">Family ID</label>
+//   <input
+//     type="text"
+//     name="family_id"
+//     placeholder="Family ID"
+//     onChange={this.handleChange}
+//     value={this.state.family_id}
+//   />

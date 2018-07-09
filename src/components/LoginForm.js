@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
   state = {
@@ -14,6 +15,7 @@ class LoginForm extends Component {
   }
 
   handleSubmit = (event) => {
+
     event.preventDefault();
     fetch("http://localhost:3001/api/v1/sessions",
       {
@@ -21,12 +23,15 @@ class LoginForm extends Component {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ username: this.state.username, password: this.state.password })
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
       }
     )
     .then(res => res.json())
     .then(json => {
-      console.log(json);
+      const errors = json
       localStorage.setItem('token', json.token);
       localStorage.setItem('id', json.id);
     })
@@ -34,9 +39,9 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div className="login">
+      <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username"></label>
           <input
             type="text"
             name="username"
@@ -44,7 +49,8 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             value={this.state.username}
           />
-          <label htmlFor="password">Password</label>
+        <br />
+          <label htmlFor="password"></label>
           <input
             type="password"
             name="password"
@@ -52,7 +58,9 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             value={this.state.password}
           />
+        <br />
           <input type="submit" value="Login" />
+          <p>new? <Link to ="/" >sign up</Link> </p>
         </form>
       </div>
     )

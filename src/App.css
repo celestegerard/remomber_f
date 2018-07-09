@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.LoginButton {
+  float: right;
+  padding-top: 1% ;
+  padding-right: 20%
+}
+
+.Login {
+  padding-top: 5%;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -33,6 +43,10 @@
 
 .MemoryForm {
   float: right;
+}
+
+.Registration {
+  padding-top: 40 px;
 }
 
 @keyframes App-logo-spin {

@@ -5,6 +5,7 @@ import MemoryForm from './containers/MemoryForm';
 import MemoryContainer from './containers/MemoryContainer';
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 const URL = "http://localhost:3001/api/v1/"
@@ -60,7 +61,6 @@ class App extends Component {
 
   handleMemoryFormSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     fetch(
       `http://localhost:3001/api/v1/memories`,
       {
@@ -79,25 +79,22 @@ class App extends Component {
     // const memories = this.getMemories()
     // const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
     return (
-        <div className="App">
-          To Register:
-          <br />
-          <RegistrationForm />
-          <br />
-          <br />
-          To Login:
-          <LoginForm />
-          {
-            localStorage.length > 0 ?
-            <React.Fragment>
-            <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-            <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-            <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
-            <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-          </React.Fragment>
-          :
-          null
-          }
+      <div className="App">
+        <Router>
+          <Switch>
+
+          <Route
+           exact path = "/"
+            render = { () => <RegistrationForm handleLogInClick={this.handleLogInClick}/> }
+            />
+
+          <Route
+             exact path = "/login"
+            render = { (props) => <LoginForm {...props} /> }
+            />
+
+        </Switch>
+</Router>
         </div>
     );
   }
@@ -106,11 +103,21 @@ class App extends Component {
 export default App;
 
 
+// <Route
+//   path="/account"
+//   render={ () => <Memory key={member.id} {...memory} />
 
-// fetch( URL + "memories", {
-//     method: "POST",
-//     headers: { "Content-type": "application/json" },
-//     body: JSON.stringify({ body: post })
-//   })
-//   .then(res => res.json())
-//   .then(post => console.log(post) )
+
+
+//
+// {
+//   localStorage.length > 0 ?
+//   <React.Fragment>
+//     <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+//     <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+//     <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
+//     <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
+//   </React.Fragment>
+//   :
+//   null
+// }
