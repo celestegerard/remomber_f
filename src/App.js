@@ -5,6 +5,7 @@ import MemoryForm from './containers/MemoryForm';
 import MemoryContainer from './containers/MemoryContainer';
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
+import Modal from './components/Modal';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -43,6 +44,7 @@ class App extends Component {
     fetch(URL + "tags")
     .then(res => res.json())
     .then(tags => this.setState({ tags }))
+
   }
 
   getMemories = () => {
@@ -77,47 +79,45 @@ class App extends Component {
 
   render() {
     // const memories = this.getMemories()
+    console.log(this.state);
     // const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
+
+    const preauth = [
+    <Router>
+      <Switch>
+      <Route
+       exact path = "/"
+        render = { () => <RegistrationForm handleLogInClick={this.handleLogInClick}/> }
+        />
+      <Route
+         exact path = "/login"
+        render = { (props) => <LoginForm {...props} /> }
+        />
+      <Modal />
+    </Switch>
+  </Router>
+]
+
+  const routes = [
+  <Router>
+    <Switch>
+      <React.Fragment>
+        <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+        <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+        <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
+        <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
+      </React.Fragment>
+    </Switch>
+  </Router>
+]
+
     return (
+
       <div className="App">
-        <Router>
-          <Switch>
-
-          <Route
-           exact path = "/"
-            render = { () => <RegistrationForm handleLogInClick={this.handleLogInClick}/> }
-            />
-
-          <Route
-             exact path = "/login"
-            render = { (props) => <LoginForm {...props} /> }
-            />
-
-        </Switch>
-</Router>
-        </div>
+        { localStorage > 0 ? routes : preauth }
+      </div>
     );
   }
 }
 
 export default App;
-
-
-// <Route
-//   path="/account"
-//   render={ () => <Memory key={member.id} {...memory} />
-
-
-
-//
-// {
-//   localStorage.length > 0 ?
-//   <React.Fragment>
-//     <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-//     <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-//     <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
-//     <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-//   </React.Fragment>
-//   :
-//   null
-// }
