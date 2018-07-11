@@ -5,14 +5,14 @@ import UUID from 'uuid'
 class MemoryDetailContainer extends Component {
 
   generateMemories = () => {
-    return this.props.memories.map(memory => <MemoryDetail key={UUID()} handleMemoryDetailSelect={this.props.handleMemoryDetailSelect} memory={memory} />)
+    return this.props.memories.map(memory => <MemoryDetail handleSearch={this.props.handleSearch} key={UUID()} handleMemoryDetailSelect={this.props.handleMemoryDetailSelect} memory={memory} />)
   }
 
   render() {
     const memoryDetail = this.generateMemories()
     return(
       <div className="MemoryDetailContainer">
-        { memoryDetail }
+        { localStorage > 0 ? memoryDetail : null }
       </div>
     )
   }

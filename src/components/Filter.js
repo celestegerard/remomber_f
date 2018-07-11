@@ -8,11 +8,11 @@ class Filter extends Component {
   }
 
   render() {
-    const membersSelect = this.generateMembers()
+    const membersSelect = this.generateMembers();
 
 
     return(
-      <div className="filter"  onChange={(e) => this.props.handleDropdownSelect(e.target.value)} >
+      <div className="filter"  onClick={(e) => this.props.handleDropdownSelect(e)} >
         <select>
           <option value="all family">family</option>
           {membersSelect}

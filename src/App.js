@@ -5,7 +5,6 @@ import MemoryForm from './containers/MemoryForm';
 import MemoryContainer from './containers/MemoryContainer';
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
-import Modal from './components/Modal';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -19,11 +18,12 @@ class App extends Component {
     members: [],
     currentMember: "",
     families: [],
-    tags: []
+    tags: [],
+    searchTerm: ""
   }
 
-  handleDropdownSelect = currentMember => {
-    this.setState({ currentMember })
+  handleDropdownSelect = (e) => {
+    this.setState({ currentMember: e.target.value })
   }
 
   handleMemoryDetailSelect = memoryTitle => {
@@ -45,42 +45,67 @@ class App extends Component {
     .then(res => res.json())
     .then(tags => this.setState({ tags }))
 
+      fetch(
+        `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(res => res.json())
+      .then(memories => this.setState({ memories }))
+
   }
 
-  getMemories = () => {
+
+
+
+  handleMemoryFormSubmit = (e) => {
+    console.log(e.target.children[2].value);
+    e.preventDefault();
+    debugger
     fetch(
       `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
       {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `${localStorage.getItem("token")}`
-        }
-      }
-    )
-    .then(res => res.json())
-    .then(memories => this.setState({ memories }))
-  }
-
-  handleMemoryFormSubmit = (e) => {
-    e.preventDefault();
-    fetch(
-      `http://localhost:3001/api/v1/memories`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json" },
-        body: JSON.stringify({ body: e.target.value })
+        },
+        body: JSON.stringify({
+          title: e.target.children[2].value,
+           member_id: `${localStorage.getItem("id")}`
+         })
       }
     )
     .then(res => res.json())
     .then(data => console.log(data))
   }
 
+  handleMemoryDelete = (e) => {
+    console.log(e.target.id);
+    fetch( `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories/` + `${e.target.id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${localStorage.getItem("token")}`
+      }
+    }).then(res => res.json())
+  }
+
+  handleSearch = (e) => {
+    this.setState({ searchTerm: e.target.value })
+    const filteredMemories = this.state.memories.include
+  }
+
+
 
   render() {
-    // const memories = this.getMemories()
-    console.log(this.state);
-    // const filteredMemories = this.state.memories.filter(memory => memory.member.first_name.includes(this.state.currentMember) )
+
+    const filteredMemories = this.state.memories.filter(memory => memory.title.toLowerCase().includes(this.state.searchTerm) || memory.title.toLowerCase().includes(this.state.searchTerm) )
 
     const preauth = [
     <Router>
@@ -93,7 +118,6 @@ class App extends Component {
          exact path = "/login"
         render = { (props) => <LoginForm {...props} /> }
         />
-      <Modal />
     </Switch>
   </Router>
 ]
@@ -101,23 +125,60 @@ class App extends Component {
   const routes = [
   <Router>
     <Switch>
-      <React.Fragment>
-        <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-        <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-        <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
-        <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-      </React.Fragment>
+        <Route
+         exact path = "/"
+         render = { () => <React.Fragment>
+           <NavBar handleSearch={this.handleSearch} members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+           <MemoryDetailContainer  memories={filteredMemories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+           <MemoryContainer handleMemoryEdit={this.handleMemoryEdit} handleMemoryDelete={this.handleMemoryDelete} currentMemory={this.state.currentMemory} tags={this.state.tags} />
+           <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
+         </React.Fragment>
+          }
+     />
     </Switch>
   </Router>
 ]
 
+
     return (
 
       <div className="App">
-        { localStorage > 0 ? routes : preauth }
+        { localStorage.length > 0 ? routes : preauth }
       </div>
     );
   }
 }
 
 export default App;
+
+
+
+// <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
+// <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+// <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
+// <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
+// </React.Fragment>
+
+// <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+// <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
+// <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
+// }
+
+// handleMemoryEdit = (e) => {
+//   fetch(
+//     `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
+//     {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Authorization": `${localStorage.getItem("token")}`
+//       },
+//       body: JSON.stringify({
+//         title: e.target.children[2].value,
+//          member_id: `${localStorage.getItem("id")}`
+//        })
+//     }
+//   )
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+// }
