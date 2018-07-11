@@ -44,30 +44,33 @@ class App extends Component {
     fetch(URL + "tags")
     .then(res => res.json())
     .then(tags => this.setState({ tags }))
-
-      fetch(
-        `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `${localStorage.getItem("token")}`
-          }
-        }
-      )
-      .then(res => res.json())
-      .then(memories => this.setState({ memories }))
-
   }
 
+setMemoryState = (memories) => {
+  console.log(memories);
+  this.setState({
+    memories
+  })
+}
 
 
+  // fetch(
+  //   `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
+  //   {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `${localStorage.getItem("token")}`
+  //     }
+  //   }
+  // )
+  // .then(res => res.json())
+  // .then(memories => this.setState({ memories }))
 
   handleMemoryFormSubmit = (e) => {
-    console.log(e.target.children[2].value);
     e.preventDefault();
-    debugger
+    let userId = parseInt(localStorage.getItem("id"))
     fetch(
-      `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
+      `http://localhost:3001/api/v1/memories`,
       {
         method: "POST",
         headers: {
@@ -75,18 +78,54 @@ class App extends Component {
           "Authorization": `${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
-          title: e.target.children[2].value,
-           member_id: `${localStorage.getItem("id")}`
+          title: e.target.title.value,
+          body: e.target.body.value,
+          member_id: `${localStorage.getItem("id")}`
          })
       }
     )
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      this.setState({
+        memories: [...this.state.memories, data]
+      })
+    })
+  }
+
+  handleMemoryEdit = (memoryId, memoryTitle, memoryBody) => {
+    fetch(
+      `http://localhost:3001/api/v1/memories/${memoryId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({
+          title: memoryTitle,
+          body: memoryBody,
+          member_id: `${localStorage.getItem("id")}`
+         })
+      }
+    )
+    .then(res => res.json())
+    .then(data => {
+      let newMemories = this.state.memories.map(memory => {
+        if (data.id === memory.id) {
+          return data
+        }
+        return memory
+      })
+      this.setState({
+        memories: newMemories,
+        currentMemory: data,
+      })
+    })
   }
 
   handleMemoryDelete = (e) => {
-    console.log(e.target.id);
-    fetch( `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories/` + `${e.target.id}`,
+    let memoryId = parseInt(e.target.id)
+    fetch( `http://localhost:3001/api/v1/memories/${e.target.id}`,
     {
       method: "DELETE",
       headers: {
@@ -94,6 +133,13 @@ class App extends Component {
         "Authorization": `${localStorage.getItem("token")}`
       }
     }).then(res => res.json())
+    .then(data => {
+      let memoriesRemoved = this.state.memories.filter(memory => memory.id !== memoryId)
+      this.setState({
+        memories: memoriesRemoved,
+        currentMemory: {}
+      })
+    })
   }
 
   handleSearch = (e) => {
@@ -122,6 +168,9 @@ class App extends Component {
   </Router>
 ]
 
+
+
+
   const routes = [
   <Router>
     <Switch>
@@ -129,7 +178,7 @@ class App extends Component {
          exact path = "/"
          render = { () => <React.Fragment>
            <NavBar handleSearch={this.handleSearch} members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-           <MemoryDetailContainer  memories={filteredMemories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+           <MemoryDetailContainer  setMemoryState={this.setMemoryState} memories={filteredMemories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
            <MemoryContainer handleMemoryEdit={this.handleMemoryEdit} handleMemoryDelete={this.handleMemoryDelete} currentMemory={this.state.currentMemory} tags={this.state.tags} />
            <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
          </React.Fragment>
@@ -162,23 +211,4 @@ export default App;
 // <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
 // <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
 // <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-// }
-
-// handleMemoryEdit = (e) => {
-//   fetch(
-//     `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
-//     {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Authorization": `${localStorage.getItem("token")}`
-//       },
-//       body: JSON.stringify({
-//         title: e.target.children[2].value,
-//          member_id: `${localStorage.getItem("id")}`
-//        })
-//     }
-//   )
-//   .then(res => res.json())
-//   .then(data => console.log(data))
 // }

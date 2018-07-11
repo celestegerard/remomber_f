@@ -5,13 +5,20 @@ class MemoryForm extends Component {
   render() {
     return(
       <form className="MemoryForm" onSubmit={(e) => this.props.handleMemoryFormSubmit(e)}>
-      <label>record the memory</label>
+      <label>Record the Memory</label>
       <br />
       <input
         type="text"
-        name="memory"
-        placeholder="what happened?"
+        name="title"
+        placeholder="The title of your memory..."
       />
+      <br />
+      <input
+        type="text"
+        name="body"
+        placeholder="What happened?"
+      />
+      <br />
       <input
         type="submit"
         value="done"

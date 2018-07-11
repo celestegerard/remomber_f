@@ -90,8 +90,6 @@ class RegistrationForm extends Component {
         />
     </React.Fragment>
 
-    console.log(this.state);
-
     return (
       <div className="Registration">
         <Link to="/login" className="LoginButton">login</Link>
