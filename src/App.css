@@ -78,6 +78,7 @@
 }
 
 .Registration {
+  padding-top: 350px;
   text-align: center;
   align: left;
   margin: auto;
@@ -85,16 +86,29 @@
   border: 1px solid #f7f7f7;
   border-radius: 10px;
   padding: 10px;
+  padding-bottom: 30px;
 }
 
 .RegisterType {
+  font-family: 'IBM Plex Sans-Serif', sans-serif;
   font-size: 12px;
-  font-style: helvetica-light;
 }
 
 .Login {
   text-align: center;
+  text-size: 14px;
+  margin: auto;
+  width: 200px;
+  border: 1px solid #f7f7f7;
+  border-radius: 10px;
+  padding-top: 40px;
 }
+
+.loginText{
+  font-family: 'IBM Plex Sans-Serif', sans-serif;
+  font-size: 12px;
+}
+
 
 .LoginButton {
   font-size: 12px;
@@ -124,7 +138,7 @@
   font-family: 'IBM Plex Serif', serif;
   padding-left: 75px;
   padding-right: 75px;
-  padding-top: 10px;
+  padding-top: 30px;
   font-size: 20px;
 }
 
@@ -177,6 +191,10 @@
 .editTitle {
   width: 425px;
   padding-left: 75px;
+}
+
+.paddingTop {
+  height: 130px;
 }
 
 @font-face {

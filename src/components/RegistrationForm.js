@@ -91,46 +91,53 @@ class RegistrationForm extends Component {
     </React.Fragment>
 
     return (
-      <div className="Registration">
-        <Link to="/login" className="LoginButton">login</Link>
-      <br />
-      <div className="RegisterType" >welcome!</div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username" />
-          <input
-            type="text"
-            name="username"
-            placeholder="email"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
+      <React.Fragment>
+        <div className="paddingTop">
+        </div>
+        <div className="Registration">
+          <Link to="/login" className="LoginButton">login</Link>
         <br />
-          <label htmlFor="password" />
-          <input
-            type="password"
-            name="password"
-            placeholder="create a password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
         <br />
-          <label htmlFor="first_name" />
-          <input
-            type="text"
-            name="first_name"
-            placeholder="first name"
-            onChange={this.handleChange}
-            value={this.state.first_name}
-          />
-        <br />
-        { this.state.isClicked ? family_id_field : last_name_field }
-        <br />
-        <input onClick={this.handleCheckboxClick} type="checkbox" id="familyid" name="subscribe" value="" />
-        <label for="family_id" className="RegisterType"> connect to my family</label>
-        <br />
-          <input className="Continue" type="submit" value="continue" />
-        </form>
-      </div>
+        <div className="RegisterType" >welcome!</div>
+          <br />
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="username" />
+            <input
+              type="text"
+              name="username"
+              placeholder="email"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
+          <br />
+            <label htmlFor="password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="create a password"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
+          <br />
+            <label htmlFor="first_name" />
+            <input
+              type="text"
+              name="first_name"
+              placeholder="first name"
+              onChange={this.handleChange}
+              value={this.state.first_name}
+            />
+          <br />
+          { this.state.isClicked ? family_id_field : last_name_field }
+          <br />
+          <input onClick={this.handleCheckboxClick} type="checkbox" id="familyid" name="subscribe" value="" />
+          <label for="family_id" className="RegisterType"> connect to my family</label>
+          <br />
+          <br />
+            <input className="Continue" type="submit" value="continue" />
+          </form>
+        </div>
+      </React.Fragment>
     )
   }
 }
