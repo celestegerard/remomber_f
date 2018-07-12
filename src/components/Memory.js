@@ -3,10 +3,20 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 class Memory extends Component {
+  // constructor(props){
+  //   super(props)
+  //
+  // }
+
+
   state = {
     edit: false,
-    title: '',
-    body: ''
+    title: this.props.currentMemory.title,
+    body: 'Body'
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ title: nextProps.currentMemory.title, body: nextProps.currentMemory.body })
   }
 
   editMemory = () => {
@@ -29,6 +39,7 @@ class Memory extends Component {
   }
 
   showMemory = () => {
+    console.log("props",this.props)
     return (
       <div>
       <p className="currentMemoryTitle">{this.props.currentMemory.title}</p>
@@ -60,7 +71,7 @@ class Memory extends Component {
           name="title"
           onChange={this.handleEdit}
           value={this.state.title}
-          placeholder={this.props.currentMemory.title}
+
           />
         <br />
 
@@ -74,7 +85,7 @@ class Memory extends Component {
           name="body"
           onChange={this.handleEdit}
           value={this.state.body}
-          placeholder={this.props.currentMemory.body}
+
           />
          <br />
         <input
