@@ -15,6 +15,7 @@ class MemoryForm extends Component {
         <form className="TextFields" onSubmit={(e) => this.props.handleMemoryFormSubmit(e)}>
         <br />
         <TextField
+          className="TitlePost"
           type="text"
           name="title"
           placeholder="Title"
@@ -28,7 +29,6 @@ class MemoryForm extends Component {
             rowsMax="16"
             className="BodyTextField"
             margin="normal"
-            placeholder="Entry"
           />
         <br />
         <input

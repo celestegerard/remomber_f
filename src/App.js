@@ -138,7 +138,7 @@ setMemoryState = (memories) => {
 
   render() {
 
-    const filteredMemories = this.state.memories.filter(memory => console.log(memory) && memory.title.toLowerCase().includes(this.state.searchTerm) || memory.title.toLowerCase().includes(this.state.searchTerm) )
+    const filteredMemories = this.state.memories.filter(memory => memory.title.toLowerCase().includes(this.state.searchTerm || this.state.currentMember ) || memory.title.toLowerCase().includes(this.state.searchTerm || this.state.currentMember) )
 
     const preauth = [
     <Router>

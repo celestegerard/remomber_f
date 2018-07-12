@@ -55,14 +55,15 @@
 }
 
 .MemoryDetailTitle {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 500;
   padding-left: 25px;
   padding-right: 20px;
 }
 
 .MemoryDetailBody {
-  font-weight: 400;
+  font-family: 'IBM Plex Sans-Serif', sans-serif;
+  font-weight: 300;
   padding-left: 25px;
   padding-right: 20px;
 }
@@ -124,7 +125,7 @@
 
 .currentMemory {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 22px;
   padding-left: 75px;
   padding-right: 35px;
@@ -153,6 +154,7 @@
 }
 
 .TextFields {
+  font-family: 'IBM Plex Serif', serif;
   padding-left: 25px;
 }
 

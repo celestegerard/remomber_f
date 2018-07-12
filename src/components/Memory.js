@@ -73,7 +73,6 @@ class Memory extends Component {
           type="text"
           name="body"
           onChange={this.handleEdit}
-          value={this.state.body}
           placeholder={this.props.currentMemory.body}
           />
          <br />
@@ -103,3 +102,5 @@ class Memory extends Component {
 export default Memory;
 
   // placeholder={this.props.currentMemory.body}
+    //
+    // value={this.state.body}
