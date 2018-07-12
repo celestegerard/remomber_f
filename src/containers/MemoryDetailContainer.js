@@ -27,7 +27,7 @@ class MemoryDetailContainer extends Component {
   render() {
     const memoryDetail = this.generateMemories()
     return(
-      <div className="MemoryDetailContainer">
+      <div className="Column MemoryDetailContainer">
         { memoryDetail }
       </div>
     )

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 class MemoryDetail extends Component {
   render() {
+    console.log(this.props.memory.body.slice(0, 30));
 
     return(
       <div className="MemoryDetail">
-        <b onClick={(e) => this.props.handleMemoryDetailSelect(e.target.innerText)}>{this.props.memory.title}</b>
-        <p>{this.props.memory.body}</p>
+        <p className="MemoryDetailTitle" onClick={(e) => this.props.handleMemoryDetailSelect(e.target.innerText)}>{this.props.memory.title}</p>
+        <p className="MemoryDetailBody" >{this.props.memory.body.slice(0, 63) + '...'}</p>
       </div>
     )
   }

@@ -32,33 +32,49 @@
 
 .Filter {
   align: left;
-  padding-left: 40px;
+  padding-left: 25px;
   padding-top: 15px;
-  border: solid;
   height: 40px;
 }
 
+.Column {
+  overflow: scroll;
+  height:100vh;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  float: left;
+  background-color: white;
+  border-right: 1px solid #cccccc;
+}
+
+
 .MemoryDetailContainer {
-  width: 180px;
+  width: 220px;
   float: left;
-  border: solid;
+  background-color: #fcfcfc;
 }
 
-.MemoryContainer {
-  float: left;
-  width: 380px;
-  border: solid;
+.MemoryDetailTitle {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  padding-left: 25px;
+  padding-right: 20px;
 }
 
-.MemoryForm {
+.MemoryDetailBody {
+  font-weight: 400;
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+
+.CurrentMemoryContainer {
+  padding-right: 25px;
   float: left;
-  width: 425px;
-  border: solid;
+  width: 500px;
 }
 
 .Registration {
-  font-family: 'Roboto', 300, sans-serif;
-  font-size: 16 px;
   text-align: center;
   align: left;
   margin: auto;
@@ -88,7 +104,81 @@
 
 
 .SearchBar {
-  border: dotted;
+  padding-left: 25px;
+}
+
+.MemoryDetail {
+  border-top: 1px solid #f7f7f7;
+}
+
+.NavBar {
+  border-right: 1px solid #f7f7f7;
+}
+
+.currentMemoryTitle {
+  font-family: 'IBM Plex Serif', serif;
+  padding-left: 75px;
+  padding-right: 75px;
+  font-size: 20px;
+}
+
+.currentMemory {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22px;
+  padding-left: 75px;
+  padding-right: 35px;
+  font-size: 16px;
+}
+
+.edButtons {
+  align-content: right;
+  background-color: red;
+  padding-left: 25px;
+}
+
+.MemoryForm {
+  width: 380px;
+
+}
+
+.DeleteButton {
+  font-family: 'Standard';
+  padding-left: 70px;
+}
+
+.AddButton {
+  font-family: 'Standard';
+  padding-left: 30px;
+}
+
+.TextFields {
+  padding-left: 25px;
+}
+
+.BodyTextField {
+  width: 300px;
+}
+
+.editTitle {
+  padding-left: 25px;
+  width: 425px;
+}
+
+.editBody {
+  width: 425px;
+}
+
+@font-face {
+  font-family: 'Standard';
+  font-style: normal;
+  src: url('./fonts/ss-standard.otf');
+}
+
+@font-face {
+  font-family: 'BlackTie';
+  font-style: normal;
+  src: url('./fonts/ss-black-tie-light.otf');
 }
 
 

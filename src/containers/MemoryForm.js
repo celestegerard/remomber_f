@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class MemoryForm extends Component {
+  state={
+    clicked: false
+  }
 
   render() {
     return(
-      <form className="MemoryForm" onSubmit={(e) => this.props.handleMemoryFormSubmit(e)}>
-      <label>Record the Memory</label>
+      <div className="Column MemoryForm">
+        <p className="AddButton"> add</p>
+        { this.state.clicked}
+        <form className="TextFields" onSubmit={(e) => this.props.handleMemoryFormSubmit(e)}>
+        <br />
+        <TextField
+          type="text"
+          name="title"
+          placeholder="Title"
+        />
       <br />
-      <input
-        type="text"
-        name="title"
-        placeholder="The title of your memory..."
-      />
-      <br />
-      <input
-        type="text"
-        name="body"
-        placeholder="What happened?"
-      />
-      <br />
-      <input
-        type="submit"
-        value="done"
-         />
-    </form>
+        <TextField
+          name="body"
+            id="multiline-static"
+            multiline
+            rows="4"
+            rowsMax="16"
+            className="BodyTextField"
+            margin="normal"
+            placeholder="Entry"
+          />
+        <br />
+        <input
+          type="submit"/>
+      </form>
+    </div>
     )
   }
 }

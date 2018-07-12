@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class Memory extends Component {
   state = {
@@ -29,21 +31,16 @@ class Memory extends Component {
   showMemory = () => {
     return (
       <div>
-      <p>{this.props.currentMemory.title}</p>
-        <p>{this.props.currentMemory.body}</p>
-        {this.props.currentMemory.title ?
+      <p className="currentMemoryTitle">{this.props.currentMemory.title}</p>
+        <p className="currentMemory">{this.props.currentMemory.body}</p>
+        {this.props.currentMemory.title || this.props.currentMemory.body ?
           <React.Fragment>
-            <input onClick={this.editMemory}
-              type="button"
-              value="Edit"
-              />
-            <br />
-            <input onClick={(e) => this.props.handleMemoryDelete(e)}
-              id = {this.props.currentMemory.id}
-              type="submit"
-              value="Delete"
-              />
-            <br />
+            <p className ="DeleteButton"
+              onClick={this.editMemory}
+              >edit</p>
+            <p className ="DeleteButton"
+               onClick={(e) => this.props.handleMemoryDelete(e)}
+               id = {this.props.currentMemory.id}>delete</p>
           </React.Fragment>
           :
           null
@@ -57,7 +54,8 @@ class Memory extends Component {
       <div>
       {this.props.currentMemory.title ?
         <React.Fragment>
-        <input
+        <TextField
+          className="editTitle"
           type="text"
           name="title"
           onChange={this.handleEdit}
@@ -65,16 +63,23 @@ class Memory extends Component {
           placeholder={this.props.currentMemory.title}
           />
         <br />
-        <input
+
+        <TextField
+          id="multiline-flexible"
+          multiline
+          rowsMax="200"
+          className="editBody"
+          margin="normal"
           type="text"
           name="body"
           onChange={this.handleEdit}
           value={this.state.body}
-            placeholder={this.props.currentMemory.body}
+          placeholder={this.props.currentMemory.body}
           />
          <br />
         <input
           type="submit"
+          value="submit"
           onClick={this.editMemoryBackend}
           />
        </React.Fragment>
@@ -96,3 +101,5 @@ class Memory extends Component {
   }
 }
 export default Memory;
+
+  // placeholder={this.props.currentMemory.body}

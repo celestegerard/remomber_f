@@ -5,7 +5,7 @@ class MemoryContainer extends Component {
 
   render() {
     return(
-      <div className="MemoryContainer" >
+      <div className="Column CurrentMemoryContainer">
         <Memory currentMemory={this.props.currentMemory} handleMemoryDelete={this.props.handleMemoryDelete} handleMemoryEdit={this.props.handleMemoryEdit} />
       </div>
     )
