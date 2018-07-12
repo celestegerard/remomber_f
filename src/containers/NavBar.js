@@ -7,7 +7,6 @@ class NavBar extends Component {
     return(
       <div className="Nav">
         <Filter members={this.props.members} handleDropdownSelect={this.props.handleDropdownSelect}/>
-        <br />
         <SearchBar handleSearch={this.props.handleSearch} />
         <br />
       </div>

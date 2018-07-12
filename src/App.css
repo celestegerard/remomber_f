@@ -1,15 +1,12 @@
 .App {
-  text-align: center;
+  width: 1900 px;
+  font-size: 11 px;
 }
 
 .LoginButton {
   float: right;
   padding-top: 1% ;
   padding-right: 20%
-}
-
-.Login {
-  padding-top: 5%;
 }
 
 .App-logo {
@@ -33,21 +30,65 @@
   text-align: left;
 }
 
+.Filter {
+  align: left;
+  padding-left: 40px;
+  padding-top: 15px;
+  border: solid;
+  height: 40px;
+}
+
 .MemoryDetailContainer {
+  width: 180px;
   float: left;
-  font-style: 'roboto'
+  border: solid;
 }
 
 .MemoryContainer {
-  align-items: center;
+  float: left;
+  width: 380px;
+  border: solid;
 }
 
 .MemoryForm {
-  float: right;
+  float: left;
+  width: 425px;
+  border: solid;
 }
 
 .Registration {
-  padding-top: 40 px;
+  font-family: 'Roboto', 300, sans-serif;
+  font-size: 16 px;
+  text-align: center;
+  align: left;
+  margin: auto;
+  width: 200px;
+  border: 1px solid #f7f7f7;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.RegisterType {
+  font-size: 12px;
+  font-style: helvetica-light;
+}
+
+.Login {
+  text-align: center;
+}
+
+.LoginButton {
+  font-size: 12px;
+}
+
+.ContinueButton {
+  height: 300px;
+  width: 100px
+}
+
+
+.SearchBar {
+  border: dotted;
 }
 
 

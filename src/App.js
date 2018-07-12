@@ -53,19 +53,6 @@ setMemoryState = (memories) => {
   })
 }
 
-
-  // fetch(
-  //   `http://localhost:3001/api/v1/members/${localStorage.getItem("id")}/memories`,
-  //   {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": `${localStorage.getItem("token")}`
-  //     }
-  //   }
-  // )
-  // .then(res => res.json())
-  // .then(memories => this.setState({ memories }))
-
   handleMemoryFormSubmit = (e) => {
     e.preventDefault();
     let userId = parseInt(localStorage.getItem("id"))
@@ -151,7 +138,7 @@ setMemoryState = (memories) => {
 
   render() {
 
-    const filteredMemories = this.state.memories.filter(memory => memory.title.toLowerCase().includes(this.state.searchTerm) || memory.title.toLowerCase().includes(this.state.searchTerm) )
+    const filteredMemories = this.state.memories.filter(memory => console.log(memory) && memory.title.toLowerCase().includes(this.state.searchTerm) || memory.title.toLowerCase().includes(this.state.searchTerm) )
 
     const preauth = [
     <Router>
@@ -199,16 +186,3 @@ setMemoryState = (memories) => {
 }
 
 export default App;
-
-
-
-// <NavBar members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-// <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-// <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
-// <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-// </React.Fragment>
-
-// <MemoryDetailContainer memories={this.state.memories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
-// <MemoryContainer currentMemory={this.state.currentMemory} tags={this.state.tags} />
-// <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
-// }

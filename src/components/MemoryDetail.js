@@ -5,7 +5,8 @@ class MemoryDetail extends Component {
 
     return(
       <div className="MemoryDetail">
-        <p onClick={(e) => this.props.handleMemoryDetailSelect(e.target.innerText)}>{this.props.memory.title}</p>
+        <b onClick={(e) => this.props.handleMemoryDetailSelect(e.target.innerText)}>{this.props.memory.title}</b>
+        <p>{this.props.memory.body}</p>
       </div>
     )
   }

@@ -94,9 +94,7 @@ class RegistrationForm extends Component {
       <div className="Registration">
         <Link to="/login" className="LoginButton">login</Link>
       <br />
-        welcome!
-        <br />
-        <br />
+      <div className="RegisterType" >welcome!</div>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="username" />
           <input
@@ -128,11 +126,9 @@ class RegistrationForm extends Component {
         { this.state.isClicked ? family_id_field : last_name_field }
         <br />
         <input onClick={this.handleCheckboxClick} type="checkbox" id="familyid" name="subscribe" value="" />
-        <label for="family_id"> connect to my family</label>
+        <label for="family_id" className="RegisterType"> connect to my family</label>
         <br />
-        <br />
-        <br />
-          <input type="submit" value="continue" />
+          <input className="Continue" type="submit" value="continue" />
         </form>
       </div>
     )

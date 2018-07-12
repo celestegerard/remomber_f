@@ -27,4 +27,5 @@ class MemoryForm extends Component {
     )
   }
 }
+
 export default MemoryForm;

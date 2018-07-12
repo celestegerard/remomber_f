@@ -12,7 +12,7 @@ class Filter extends Component {
 
 
     return(
-      <div className="filter"  onClick={(e) => this.props.handleDropdownSelect(e)} >
+      <div className="Filter"  onClick={(e) => this.props.handleDropdownSelect(e)} >
         <select>
           <option value="all family">family</option>
           {membersSelect}
