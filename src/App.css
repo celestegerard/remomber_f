@@ -45,6 +45,7 @@
   float: left;
   background-color: white;
   border-right: 1px solid #cccccc;
+  max-height: 1500px;
 }
 
 
@@ -56,6 +57,7 @@
 
 .MemoryDetailTitle {
   font-family: 'IBM Plex Serif', serif;
+  /* font-family: 'IBM Plex San-Serif', sans-serif; */
   font-weight: 500;
   padding-left: 25px;
   padding-right: 20px;
@@ -106,6 +108,8 @@
 
 .SearchBar {
   padding-left: 25px;
+  padding-top: 10px;
+  width: 200px;
 }
 
 .MemoryDetail {
@@ -120,6 +124,7 @@
   font-family: 'IBM Plex Serif', serif;
   padding-left: 75px;
   padding-right: 75px;
+  padding-top: 10px;
   font-size: 20px;
 }
 
@@ -134,7 +139,6 @@
 
 .edButtons {
   align-content: right;
-  background-color: red;
   padding-left: 25px;
 }
 
@@ -156,19 +160,23 @@
 .TextFields {
   font-family: 'IBM Plex Serif', serif;
   padding-left: 25px;
+  font-size: 14px;
 }
 
 .BodyTextField {
+  font-family: 'IBM Plex Serif', serif;
   width: 300px;
 }
 
-.editTitle {
-  padding-left: 25px;
-  width: 425px;
-}
 
 .editBody {
   width: 425px;
+  padding-left: 75px;
+}
+
+.editTitle {
+  width: 425px;
+  padding-left: 75px;
 }
 
 @font-face {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MemoryDetail from '../components/MemoryDetail';
 import UUID from 'uuid'
+import Filter from '../components/Filter';
+import SearchBar from '../components/SearchBar'
 
 class MemoryDetailContainer extends Component {
 
@@ -27,9 +29,12 @@ class MemoryDetailContainer extends Component {
   render() {
     const memoryDetail = this.generateMemories()
     return(
-      <div className="Column MemoryDetailContainer">
-        { memoryDetail }
-      </div>
+      <React.Fragment>
+          <div className="Column MemoryDetailContainer">
+            <SearchBar className="SearchBar" handleSearch={this.props.handleSearch} />
+            { memoryDetail }
+          </div>
+        </React.Fragment>
     )
   }
 }

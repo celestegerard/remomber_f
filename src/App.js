@@ -164,8 +164,7 @@ setMemoryState = (memories) => {
         <Route
          exact path = "/"
          render = { () => <React.Fragment>
-           <NavBar handleSearch={this.handleSearch} members={this.state.members} handleDropdownSelect={this.handleDropdownSelect} />
-           <MemoryDetailContainer  setMemoryState={this.setMemoryState} memories={filteredMemories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
+           <MemoryDetailContainer  handleSearch={this.handleSearch} members={this.state.members} setMemoryState={this.setMemoryState} memories={filteredMemories} handleMemoryDetailSelect={this.handleMemoryDetailSelect} />
            <MemoryContainer handleMemoryEdit={this.handleMemoryEdit} handleMemoryDelete={this.handleMemoryDelete} currentMemory={this.state.currentMemory} tags={this.state.tags} />
            <MemoryForm handleMemoryFormSubmit={this.handleMemoryFormSubmit}  />
          </React.Fragment>
