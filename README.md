@@ -1,5 +1,5 @@
 # remomber
-a journal app for mothers to keepsake their children's memories
+remomber is a tool for mothers to keepsake their young children's memories. with it, you have a database of memories that are searchable by words, filterable by theme, and tagged per child.
 
 # demo
 watch it here: https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be
