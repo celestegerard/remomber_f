@@ -7,7 +7,8 @@ With Remomber, you have a database of memories that are searchable by words, fil
   * React
   * Javascript
   * CSS
-   *[backend](https://github.com/celestegerard/remomber_b)
+  [Backend](https://github.com/celestegerard/remomber_b)
+  * Ruby on Rails
 
 # Demo
 [watch it here!](https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be)
