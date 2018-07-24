@@ -9,7 +9,7 @@ With Remomber, you have a database of memories that are searchable by words, fil
   * CSS
 
 # Demo
-watch it here! https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be
+[watch it here](https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be)
 
 # features
 to create a place for young mothers to preserve moments of their children's lives that would fade with time
