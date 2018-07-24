@@ -1,5 +1,9 @@
-# remomber
-Remomber is a tool for mothers to keepsake their young children's memories. With it, you have a database of memories that are searchable by words, filterable by theme, and tagged per child.
+# REMOMBER (frontend)
+## a tool for mothers to keepsake their young children's memories ##
+With Remomber, you have a database of memories that are searchable by words, filterable by theme, and tagged per child. Remomber stores years of otherwide forgotten but important details stored in a clear, concise way. 
+
+# Technology Used
+
 
 # demo
 watch it here: https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be
