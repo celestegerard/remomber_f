@@ -7,13 +7,14 @@ With Remomber, you have a database of memories that are searchable by words, fil
   * React
   * Javascript
   * CSS
+   *[backend](https://github.com/celestegerard/remomber_b)
 
 # Demo
-[watch it here](https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be)
+[watch it here!](https://www.youtube.com/watch?v=ZIZvbi9XrBE&feature=youtu.be)
 
-# features
-to create a place for young mothers to preserve moments of their children's lives that would fade with time
+# Contributing
+We are not taking contributions at this time.
 
-# technology
-react, javascript, ruby on rails
+# Created by
+Celeste Gerard, [Github](https://github.com/celestegerard)
 
