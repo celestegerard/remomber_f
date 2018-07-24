@@ -4,9 +4,12 @@
 With Remomber, you have a database of memories that are searchable by words, filterable by theme, and tagged per child. Remomber stores years of otherwide forgotten but important details stored in a clear, concise way. 
 
 # Technology Used
+Remomber is an application built with both frontend and backend technologies.
+
   * React
   * Javascript
-  * CSS
+  * Custom CSS
+  * Material UI
   
   [Backend](https://github.com/celestegerard/remomber_b)
   * Ruby on Rails
